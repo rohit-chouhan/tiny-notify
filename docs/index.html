@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tiny Notify Playground - Lightweight JS Toast Notifications</title>
+
+    <!-- ✅ Metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Tiny Notify is a super lightweight, dependency-free JavaScript toast/notification system. Try the live playground to configure and preview notifications."
+    />
+    <meta
+      name="keywords"
+      content="tiny notify, javascript toast, notification system, lightweight, js notifications, toast demo"
+    />
+    <meta name="author" content="Rohit Chouhan" />
+
+    <!-- ✅ Open Graph (for social sharing) -->
+    <meta
+      property="og:title"
+      content="Tiny Notify Playground - JS Toast Notifications"
+    />
+    <meta
+      property="og:description"
+      content="Configure and preview custom toast notifications with Tiny Notify, a lightweight JavaScript notification library."
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Tiny Notify Playground - JS Toast Notifications"
+    />
+    <meta
+      name="twitter:description"
+      content="Configure and preview custom toast notifications with Tiny Notify, a lightweight JS library."
+    />
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" href="https://js.org/ico/favicon-32.png" />
+
+    <script src="https://cdn.jsdelivr.net/gh/rohit-chouhan/tiny-notify/dist/tiny-notify.js"></script>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f3f4f6;
+      }
+      .container {
+        text-align: center;
+      }
+      h1 {
+        margin-bottom: 16px;
+      }
+      .playground {
+        display: grid;
+        gap: 12px;
+        max-width: 400px;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        text-align: left;
+      }
+      label {
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 14px;
+      }
+      select,
+      input,
+      textarea,
+      button {
+        padding: 6px 8px;
+        font-size: 14px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+      }
+      button {
+        cursor: pointer;
+        background: #2563eb;
+        color: white;
+        font-weight: 600;
+        border: none;
+        transition: background 0.2s;
+      }
+      button:hover {
+        background: #1e40af;
+      }
+      .footer {
+        margin-top: 16px;
+        font-size: 13px;
+        color: #6b7280;
+      }
+      .footer a {
+        color: #2563eb;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔔 Tiny Notify Playground</h1>
+      <br />
+      <div class="playground">
+        <label>
+          Message
+          <textarea id="msg" rows="2">Hello from Tiny Notify!</textarea>
+        </label>
+
+        <label>
+          Type
+          <select id="type">
+            <option value="info">Info</option>
+            <option value="success">Success</option>
+            <option value="warning">Warning</option>
+            <option value="error">Error</option>
+          </select>
+        </label>
+
+        <label>
+          Position
+          <select id="position">
+            <option value="top-right">top-right</option>
+            <option value="top-left">top-left</option>
+            <option value="bottom-right">bottom-right</option>
+            <option value="bottom-left">bottom-left</option>
+            <option value="top-center">top-center</option>
+            <option value="bottom-center">bottom-center</option>
+          </select>
+        </label>
+
+        <label>
+          Timeout (ms) <small>(0 = sticky)</small>
+          <input type="number" id="timeout" value="3000" />
+        </label>
+
+        <label>
+          Show Progress?
+          <select id="progress">
+            <option value="true" selected>Yes</option>
+            <option value="false">No</option>
+          </select>
+        </label>
+
+        <label>
+          Dismissible?
+          <select id="dismissible">
+            <option value="true" selected>Yes</option>
+            <option value="false">No</option>
+          </select>
+        </label>
+
+        <button id="showBtn">Show Notification</button>
+        <button onclick="TinyNotify.clear()">Clear All</button>
+      </div>
+      <div class="footer">
+        <p>
+          Super lightweight, dependency-free
+          <b>toast/notification system</b> for the web.
+        </p>
+        Powered by
+        <a href="https://github.com/rohit-chouhan/tiny-notify" target="_blank"
+          >tiny-notify</a
+        >
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("showBtn").addEventListener("click", () => {
+        const msg = document.getElementById("msg").value || "Hello!";
+        const type = document.getElementById("type").value;
+        const position = document.getElementById("position").value;
+        const timeout = parseInt(document.getElementById("timeout").value, 10);
+        const showProgress =
+          document.getElementById("progress").value === "true";
+        const dismissible =
+          document.getElementById("dismissible").value === "true";
+
+        TinyNotify.show(msg, {
+          type,
+          position,
+          timeout,
+          showProgress,
+          dismissible,
+        });
+      });
+
+      TinyNotify.setDefaults({
+        position: "top-right",
+        timeout: 3000,
+        maxPerPosition: 4,
+      });
+    </script>
+  </body>
+</html>

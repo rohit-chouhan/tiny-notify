@@ -1,0 +1,83 @@
+/* Container positions */
+.tn-container {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  padding: 8px;
+  display: flex;
+  gap: 8px;
+}
+.tn-top-right    { top: 12px; right: 12px; flex-direction: column; align-items: flex-end; }
+.tn-top-left     { top: 12px; left: 12px;  flex-direction: column; align-items: flex-start; }
+.tn-bottom-right { bottom: 12px; right: 12px; flex-direction: column-reverse; align-items: flex-end; }
+.tn-bottom-left  { bottom: 12px; left: 12px;  flex-direction: column-reverse; align-items: flex-start; }
+.tn-top-center   { top: 12px; left: 50%; transform: translateX(-50%); flex-direction: column; align-items: center; }
+.tn-bottom-center{ bottom: 12px; left: 50%; transform: translateX(-50%); flex-direction: column-reverse; align-items: center; }
+
+/* Toast */
+.tn-toast {
+  pointer-events: auto;
+  min-width: 220px;
+  max-width: 360px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #1f2937;
+  color: white;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(-8px);
+  animation: tn-in .18s ease-out forwards;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Types */
+.tn-toast.tn-success { background: #0da125; } /* teal-800 */
+.tn-toast.tn-error   { background: #a1210d; } /* red-900 */
+.tn-toast.tn-info    { background: #4885f7; } /* blue-900 */
+.tn-toast.tn-warning { background: #d1af15; } /* amber-900 */
+
+/* Message */
+.tn-msg { line-height: 1.35; font-size: 14px; }
+
+/* Close button */
+.tn-x {
+  background: transparent;
+  border: 0;
+  color: rgba(255,255,255,.9);
+  cursor: pointer;
+  padding: 0 4px;
+  font-size: 16px;
+  line-height: 1;
+  border-radius: 8px;
+  opacity: .8;
+}
+.tn-x:hover { opacity: 1; }
+
+/* Progress line (optional) */
+.tn-progress {
+  height: 2px;
+  background: rgba(255,255,255,.35);
+  border-radius: 999px;
+  overflow: hidden;
+  grid-column: 1 / -1;
+}
+.tn-progress > span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: rgba(255,255,255,.8);
+  transform-origin: left center;
+  transform: scaleX(1);
+  transition: transform linear;
+}
+
+/* Animations */
+@keyframes tn-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes tn-out {
+  to { opacity: 0; transform: translateY(-8px); }
+}

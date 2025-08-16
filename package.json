@@ -1,0 +1,30 @@
+{
+  "name": "tiny-notify",
+  "version": "1.0.0",
+  "description": "A super lightweight JavaScript toast/notification system with zero dependencies.",
+  "main": "dist/tiny-notify.js",
+  "module": "dist/tiny-notify.js",
+  "unpkg": "dist/tiny-notify.js",
+  "jsdelivr": "dist/tiny-notify.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "notify",
+    "toast",
+    "notification",
+    "javascript",
+    "tiny-notify"
+  ],
+  "author": "Rohit Chouhan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rohit-chouhan/tiny-notify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rohit-chouhan/tiny-notify/issues"
+  },
+  "homepage": "https://github.com/rohit-chouhan/tiny-notify#readme"
+}
